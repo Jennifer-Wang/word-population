@@ -2,6 +2,7 @@ import React from 'react';
 import {Grid, Row} from 'react-bootstrap';
 
 import Population from './components/Population';
+import CountryList from './components/CountryList';
 
 class App extends React.Component{
 	constructor(props){
@@ -21,6 +22,7 @@ class App extends React.Component{
 						country="United States"
 						title="USA Population"
 					/>
+					<CountryList />
 				</Row>
 			</Grid>
 		)
