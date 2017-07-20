@@ -12,7 +12,7 @@ const COUNTRIES_INITIAL_STATE = {
 };
 
 
-export const countries = (state={COUNTRIES_INITIAL_STATE}, action)=>{
+export const countries = (state=COUNTRIES_INITIAL_STATE, action)=>{
 	switch (action.type){
 		case GET_COUNTRY_LIST_PENDING:
 			return {
