@@ -15,7 +15,8 @@ class Population extends React.Component{
 			numberOfCountries: null,
 			totalPopulation: null
 		};
-		this.displayCountries = this.displayCountries.bind(this)
+		this.displayCountries = this.displayCountries.bind(this);
+		this.incrementTotalPopulation = this.incrementTotalPopulation.bind(this);
 	}
 
 	componentWillReceiveProps(nextProps){
@@ -25,11 +26,21 @@ class Population extends React.Component{
 		}
 	}
 
+	incrementTotalPopulation(population){
+		this.setState({
+			totalPopulation: this.state.totalPopulation + population
+		})
+	}
+
 	displayCountries(){
-		const {countries} = this.props;
+		const {countries, } = this.props;
 		return countries.map((country, i)=>{
 			return (
-				<Country country={country} key={i}/>
+				<Country
+					country={country}
+					key={i}
+					incrementTotalPopulation={this.incrementTotalPopulation}
+				/>
 			)
 		})
 	}
