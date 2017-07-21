@@ -1,5 +1,8 @@
 # World Population
 
+### Live Demo
+[Click to Live Demo](http://population.jingpingwang.com)
+
 ### Open Web Page Locally
 1. Download or Clone this repo
 2. Navigate into the build folder
