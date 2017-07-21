@@ -16,12 +16,12 @@ class App extends React.Component{
 				<h1>World Population Application</h1>
 				<Row>
 					<Population
-						country="World"
-					  title="World Population"
+						country='World'
+					  title='World Population'
 					/>
 					<Population
-						country="United States"
-						title="USA Population"
+						country='United States'
+						title='USA Population'
 					/>
 				</Row>
 				<CountryList />

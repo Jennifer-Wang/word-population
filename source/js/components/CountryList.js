@@ -50,15 +50,15 @@ class Population extends React.Component{
 		const {getCountryList, countries, fetching} = this.props;
 		const {numberOfCountries, totalPopulation} = this.state;
 		return (
-			<Row className="country-list">
+			<Row className='country-list'>
 				<Col sm={8} smOffset={2}>
 					<h1>Shortest Country Names</h1>
 					<p>Populations of countries with shortest names</p>
 					{countries && countries.length > 0 ?
 						<div>
-							<div className="stats">
-								<span className="pull-left">Total Population of countries : {totalPopulation}</span>
-								<span className="pull-right">Number of Countries: {numberOfCountries}</span>
+							<div className='stats'>
+								<span className='pull-left'>Total Population of countries : {totalPopulation}</span>
+								<span className='pull-right'>Number of Countries: {numberOfCountries}</span>
 							</div>
 							<Clearfix></Clearfix>
 							{this.displayCountries()}

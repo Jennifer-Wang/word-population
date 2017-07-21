@@ -11,7 +11,7 @@ class Ranking extends React.Component {
 		super(props);
 		this.state = {
 			gender: '',
-			dob: '1989-06-03'
+			dob: ''
 		};
 		this.handleFetchClick = this.handleFetchClick.bind(this);
 		this.clearOnClick = this.clearOnClick.bind(this);
@@ -50,23 +50,23 @@ class Ranking extends React.Component {
 					<p>Enter your information to check where you rank</p>
 					<Col sm={4}>
 						<FormControl
-							type="type"
+							type='type'
 							value={dob}
-							placeholder="Date of Birth YYYY-MM-DD"
+							placeholder='Date of Birth YYYY-MM-DD'
 							onChange={this.handleChange.bind(this, 'dob')}
 						/>
 					</Col>
 					<Col sm={4}>
 						<FormControl
-							componentClass="select"
-							placeholder="gender"
+							componentClass='select'
+							placeholder='gender'
 							onChange={this.handleChange.bind(this, 'gender')}
 						  value={gender}
 						>
-							<option value="">Gender</option>
-							<option value="unisex">Unisex</option>
-							<option value="male">Male</option>
-							<option value="female">Female</option>
+							<option value=''>Gender</option>
+							<option value='unisex'>Unisex</option>
+							<option value='male'>Male</option>
+							<option value='female'>Female</option>
 						</FormControl>
 					</Col>
 
@@ -83,7 +83,7 @@ class Ranking extends React.Component {
 										<p>{`Gender: ${data.sex}`}</p>
 									</div>
 									<div className='pull-left'>
-										<p className="bold">Your rank in the world</p>
+										<p className='bold'>Your rank in the world</p>
 										<p>{`You are ranked: ${data.rank.toLocaleString()}`}</p>
 									</div>
 								</div>
