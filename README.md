@@ -12,8 +12,8 @@ brew install node
 npm install
 ```
 
-### build Scripts
+### Build Scripts
 ```sh
-npm run dev: local development and live reload
-npm run build : build scripts locally
+npm run dev #local development and live reload
+npm run build #build scripts locally
 ```
