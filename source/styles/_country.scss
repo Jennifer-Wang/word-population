@@ -1,0 +1,16 @@
+.country{
+  width: 100%;
+  min-height: 100px;
+  border: 2px solid #000;
+  margin: 20px 0;
+  text-align: left;
+  padding: 0 20px;
+  .pull-left:first-child{
+    margin-right: 250px;
+    margin-top: 12px;
+
+  }
+  .pull-left:last-child{
+    margin-top: 20px;
+  }
+}

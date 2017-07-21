@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Col, Button} from 'react-bootstrap';
+import {Row, Col, Button, Clearfix} from 'react-bootstrap';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 
@@ -12,8 +12,8 @@ class Population extends React.Component{
 	constructor(props){
 		super(props);
 		this.state = {
-			numberOfCountries: null,
-			totalPopulation: null
+			numberOfCountries: 0,
+			totalPopulation: 0
 		};
 		this.displayCountries = this.displayCountries.bind(this);
 		this.incrementTotalPopulation = this.incrementTotalPopulation.bind(this);
@@ -33,7 +33,7 @@ class Population extends React.Component{
 	}
 
 	displayCountries(){
-		const {countries, } = this.props;
+		const {countries} = this.props;
 		return countries.map((country, i)=>{
 			return (
 				<Country
@@ -50,21 +50,26 @@ class Population extends React.Component{
 		const {getCountryList, countries, fetching} = this.props;
 		const {numberOfCountries, totalPopulation} = this.state;
 		return (
-			<Col>
-				<h1>Shortest Country Names</h1>
-				<p>Populations of countries with shortest names</p>
-				{countries && countries.length > 0 ?
-					<div>
-						<span>Total Population of countries : {totalPopulation}</span>
-						<span>Number of Countries: {numberOfCountries}</span>
-						{this.displayCountries()}
-					</div>
-					 :
-					fetching ?
-					<Button disabled>Fetching...</Button> :
-					<Button onClick={getCountryList}>Fetch</Button>
-				}
-			</Col>
+			<Row className="country-list">
+				<Col sm={8} smOffset={2}>
+					<h1>Shortest Country Names</h1>
+					<p>Populations of countries with shortest names</p>
+					{countries && countries.length > 0 ?
+						<div>
+							<div className="stats">
+								<span className="pull-left">Total Population of countries : {totalPopulation}</span>
+								<span className="pull-right">Number of Countries: {numberOfCountries}</span>
+							</div>
+							<Clearfix></Clearfix>
+							{this.displayCountries()}
+						</div>
+						:
+						fetching ?
+							<Button disabled>Fetching...</Button> :
+							<Button onClick={getCountryList}>Fetch</Button>
+					}
+				</Col>
+			</Row>
 		)
 	}
 }

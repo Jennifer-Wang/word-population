@@ -23,9 +23,9 @@ class App extends React.Component{
 						country="United States"
 						title="USA Population"
 					/>
-					<CountryList />
-					<Ranking />
 				</Row>
+				<CountryList />
+				<Ranking />
 			</Grid>
 		)
 	}

@@ -25,16 +25,23 @@ class Country extends React.Component{
 	render(){
 		const {country, getPopulationForAge18, data} = this.props;
 		return (
-			<Col onClick={getPopulationForAge18.bind(this, country)}>
-				<h1>{country}</h1>
-				{data && !data.fetching ?
-					<div>
-						<span>Total Population {data.total.toLocaleString()}</span>
-						<span>Male Population {data.males.toLocaleString()}</span>
-						<span>Female Population {data.females.toLocaleString()}</span>
-					</div> : null
-				}
-			</Col>
+				<Col onClick={getPopulationForAge18.bind(this, country)}>
+					{data && !data.fetching ?
+						<div className='country'>
+							<div className='pull-left'>
+								<h4>{country}</h4>
+								<p>Total Population {data.total.toLocaleString()}</p>
+							</div>
+							<div className='pull-left'>
+								<p>Male Population {data.males.toLocaleString()}</p>
+								<p>Female Population {data.females.toLocaleString()}</p>
+							</div>
+						</div> :
+						<div className='country'>
+							<h4>{country}</h4>
+						</div>
+					}
+				</Col>
 		)
 	}
 }
