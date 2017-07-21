@@ -5,12 +5,13 @@
   margin: 20px 0;
   text-align: left;
   padding: 0 20px;
-  .pull-left:first-child{
-    margin-right: 250px;
-    margin-top: 12px;
-
+  .pull-left {
+    margin-top: 20px;
+    &:first-child{
+      margin-right: 250px;
+    }
   }
-  .pull-left:last-child{
+  >p{
     margin-top: 20px;
   }
 }

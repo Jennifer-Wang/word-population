@@ -1,7 +1,8 @@
 import {
 	GET_RANKING_PENDING,
 	GET_RANKING_SUCCESS,
-	GET_RANKING_FAILURE
+	GET_RANKING_FAILURE,
+	CLEAR_RANKING
 } from '../actions/rankingActions'
 
 const RANKING_INITIAL_STATE = {
@@ -33,6 +34,13 @@ export const ranking = (state=RANKING_INITIAL_STATE, action)=>{
 				fetching: false,
 				data: null,
 				error: action.error
+			};
+		case CLEAR_RANKING:
+			return {
+				...state,
+				fetching: false,
+				data: null,
+				error: null
 			};
 		default:
 			return state;

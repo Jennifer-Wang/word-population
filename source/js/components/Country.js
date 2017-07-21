@@ -29,7 +29,7 @@ class Country extends React.Component{
 					{data && !data.fetching ?
 						<div className='country'>
 							<div className='pull-left'>
-								<h4>{country}</h4>
+								<p className="bold">{country}</p>
 								<p>Total Population {data.total.toLocaleString()}</p>
 							</div>
 							<div className='pull-left'>
@@ -38,7 +38,7 @@ class Country extends React.Component{
 							</div>
 						</div> :
 						<div className='country'>
-							<h4>{country}</h4>
+							<p className="bold clickable">{country}</p>
 						</div>
 					}
 				</Col>

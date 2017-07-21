@@ -1,16 +1,16 @@
 import React from 'react';
-import {Col, FormControl, Button, FormGroup} from 'react-bootstrap';
+import {Row, Col, FormControl, Button, Clearfix} from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 
-import {getRanking} from '../actions/rankingActions'
+import {getRanking, clearRanking} from '../actions/rankingActions'
 
 class Ranking extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			gender: 'unisex',
+			gender: '',
 			dob: '1989-06-03'
 		};
 		this.handleFetchClick = this.handleFetchClick.bind(this);
@@ -27,7 +27,8 @@ class Ranking extends React.Component {
 		this.setState({
 			gender: 'unisex',
 			dob: ''
-		})
+		});
+		this.props.clearRanking();
 	}
 
 	handleFetchClick(){
@@ -41,50 +42,79 @@ class Ranking extends React.Component {
 
 	render() {
 		const {dob, gender} = this.state;
-		const {data} = this.props;
+		const {data, fetching} = this.props;
 		return (
-			<Col>
-				<FormControl
-					type="type"
-				  value={dob}
-					placeholder="Date of Birth YYYY-MM-DD"
-				  onChange={this.handleChange.bind(this, 'dob')}
-				/>
-					<select
-						placeholder="Gender"
-						value={gender}
-						onChange={this.handleChange.bind(this, 'gender')}
-					>
-						<option value="unisex">Gender</option>
-						<option value="male">Male</option>
-						<option value="female">Female</option>
-					</select>
-				<Button onClick={this.handleFetchClick}>Fetch</Button>
+			<Row>
+				<Col sm={8} smOffset={2}>
+					<h1>Check Your Ranking</h1>
+					<p>Enter your information to check where you rank</p>
+					<Col sm={4}>
+						<FormControl
+							type="type"
+							value={dob}
+							placeholder="Date of Birth YYYY-MM-DD"
+							onChange={this.handleChange.bind(this, 'dob')}
+						/>
+					</Col>
+					<Col sm={4}>
+						<FormControl
+							componentClass="select"
+							placeholder="gender"
+							onChange={this.handleChange.bind(this, 'gender')}
+						  value={gender}
+						>
+							<option value="">Gender</option>
+							<option value="unisex">Unisex</option>
+							<option value="male">Male</option>
+							<option value="female">Female</option>
+						</FormControl>
+					</Col>
 
-				<Button onClick={this.clearOnClick}>Clear</Button>
-				{data ?
-					<div>
-						<span>{`DOB: ${data.dob}`}</span>
-						<span>{`Gender: ${data.sex}`}</span>
-						<span>Your rank in the world</span>
-						<span>{`You are ranked: ${data.rank.toLocaleString()}`}</span>
-					</div> :
-					null
-				}
-			</Col>
+					{data ?
+						<div>
+							<Col sm={4}>
+								<Button bsStyle='danger' onClick={this.clearOnClick}>Clear</Button>
+							</Col>
+							<Clearfix></Clearfix>
+							<Col>
+								<div className='country'>
+									<div className='pull-left'>
+										<p>{`DOB: ${data.dob}`}</p>
+										<p>{`Gender: ${data.sex}`}</p>
+									</div>
+									<div className='pull-left'>
+										<p className="bold">Your rank in the world</p>
+										<p>{`You are ranked: ${data.rank.toLocaleString()}`}</p>
+									</div>
+								</div>
+							</Col>
+						</div> : fetching ?
+						<Col sm={4}>
+							<Button bsStyle='primary'>Fetching...</Button>
+						</Col> :
+						<Col sm={4}>
+							<Button bsStyle='primary' onClick={this.handleFetchClick}>Fetch</Button>
+						</Col>
+					}
+				</Col>
+			</Row>
+
 		)
 	}
 }
 
 const mapStateToProps = (state, props) => {
 	return {
-		data : state.ranking.data
+		data : state.ranking.data,
+		fetching: state.ranking.fetching
 	}
 };
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-		getRanking: bindActionCreators(getRanking, dispatch)
+		getRanking: bindActionCreators(getRanking, dispatch),
+		clearRanking: bindActionCreators(clearRanking, dispatch)
+
 	}
 };
 

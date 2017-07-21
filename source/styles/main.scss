@@ -1,7 +1,12 @@
 @import 'country';
-@import 'countryList';
-@import 'ranking';
 
 body {
+    margin: 100px 0;
     text-align: center;
+    .bold {
+        font-weight: bold;
+    }
+    .clickable{
+        cursor: pointer;
+    }
 }
