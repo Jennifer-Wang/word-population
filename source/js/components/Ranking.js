@@ -25,7 +25,7 @@ class Ranking extends React.Component {
 
 	clearOnClick(){
 		this.setState({
-			gender: 'unisex',
+			gender: '',
 			dob: ''
 		});
 		this.props.clearRanking();
